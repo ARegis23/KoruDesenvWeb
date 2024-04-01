@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> RPG - Mesa Teste </title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h1 class="mb-4"> Personagens em Jogo </h1>
+            <a href="{{ url_for('criar_personagem') }}" class="btn btn-primary mb-3"> Cadastrar Novo Personagem </a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> ID </th>
+                        <th> Usuário </th>
+                        <th> Personagem </th>
+                        <th> Origem </th>
+                        <th> Level </th>
+                        <th> Vida </th>
+                        <th> Dinheiro </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for id, personagem in dados.items() %}
+                        <tr>
+                            <td> {{ id }} </td>
+                            <td> {{ personagem['usuario'] }} </td>
+                            <td> {{ personagem['personagem'] }} </td>
+                            <td> {{ personagem['origem'] }} </td>
+                            <td> {{ personagem['level'] }} </td>
+                            <td> {{ personagem['vida'] }} </td>
+                            <td> {{ personagem['dinheiro'] }} </td>
+                            <td> <a href="{{ url_for('editar_personagem', id = id) }}"> Editar </a> </td>
+                        </tr>
+                    {% endfor %}    
+                </tbody>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
