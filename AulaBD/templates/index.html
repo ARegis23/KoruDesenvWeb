@@ -24,18 +24,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for id, usuario, personagem, origem, level, vida, dinheiro in dados %}
+                    {% if dados %}
+                        {% for id, usuario, personagem, origem, level, vida, dinheiro in dados %}
+                            <tr>
+                                <td> {{ id }} </td>
+                                <td> {{ usuario }} </td>
+                                <td> {{ personagem }} </td>
+                                <td> {{ origem }} </td>
+                                <td> {{ level }} </td>
+                                <td> {{ vida }} </td>
+                                <td> {{ dinheiro }} </td>
+                                <td> <a href="{{ url_for('editar_personagem', id = id) }}"> Editar </a> </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
                         <tr>
-                            <td> {{ id }} </td>
-                            <td> {{ usuario }} </td>
-                            <td> {{ personagem }} </td>
-                            <td> {{ origem }} </td>
-                            <td> {{ level }} </td>
-                            <td> {{ vida }} </td>
-                            <td> {{ dinheiro }} </td>
-                            <td> <a href="{{ url_for('editar_personagem', id = id) }}"> Editar </a> </td>
+                            <td colspan="8">Nenhum personagem encontrado</td>
                         </tr>
-                    {% endfor %}    
+                    {% endif %}                       
                 </tbody>
             </table>
         </div>

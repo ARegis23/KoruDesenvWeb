@@ -59,7 +59,7 @@ def atualizar_personagem(id:int, usuario, personagem, origem, level, vida, dinhe
         conn = sqlite3.connect("RPG.db")
         cursor = conn.cursor()
         sql_update = "UPDATE personagens SET usuario_personagem = ?, personagem_personagem = ?, origem_personagem = ?, level_personagem = ?, vida_personagem = ?, dinheiro_personagem = ? WHERE id_personagem = ?"
-        cursor.execute(sql_update, (usuario, personagem, origem, level, vida, dinheiro, id))
+        cursor.execute(sql_update, (id, usuario, personagem, origem, level, vida, dinheiro))
         conn.commit()
         conn.close()
         return True
